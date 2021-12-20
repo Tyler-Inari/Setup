@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  focus:
+    container_name: focus-analysis
+    build: ./
+    tty: true
+    command: jupyter-lab --ip=0.0.0.0 --port=8888 --allow-root --LabApp.token=''
+    volumes:
+      - ./code:/code
+    ports:
+      - "8888:8888"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
