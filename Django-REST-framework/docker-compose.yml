@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  api:
+    container_name: djnago
+    build: ./
+    command: python3 manage.py runserver ${HOST}:${PORT}
+    volumes:
+      - .${WORKDIR}:${WORKDIR}
+    ports:
+      - ${PORT}:${PORT}
+    env_file:
+      - ./.env
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      ROOT_URLCONF: ${ROOT_URLCONF}
+      WSGI_APPLICATION: ${WSGI_APPLICATION}
+      LANGUAGE_CODE: ${LANGUAGE_CODE}
+      TIME_ZONE: ${TIME_ZONE}
+      PYTHONUNBUFFERED: ${PYTHONUNBUFFERED}
+      PYTHONIOENCODING: ${PYTHONIOENCODING}
+      LANG: ${LANG}
+      LC_ALL: ${LC_ALL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
+      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+      AWS_S3_REGION_NAME: ${AWS_S3_REGION_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_ENCODING: ${DB_ENCODING}
+      DB_LC_COLLATE: ${DB_LC_COLLATE}
+      DB_LC_CTYPE: ${DB_LC_CTYPE}
+      DEBUG: ${DEBUG}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
