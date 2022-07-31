@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  api:
+    container_name: python-mecab
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .${WORKDIR}:${WORKDIR}
+    command: jupyter-lab --ip=${HOST} --port=${PORT} --allow-root --LabApp.token=''
+    ports:
+      - ${PORT}:${PORT}
+    env_file:
+      - ./.env
+    environment:
+      - LANG=${LANG}
+      - PYTHONUNBUFFERED=${PYTHONUNBUFFERED}
+      - PYTHONIOENCODING=${PYTHONIOENCODING}
+      - MECAB_PATH=${MECAB_PATH}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    tty: true
