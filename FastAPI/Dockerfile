@@ -13,7 +13,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 &&
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
     pip3 install --upgrade pip setuptools wheel
 
-RUN mkdir ${WORKDIR}
+# RUN mkdir ${WORKDIR}
 WORKDIR ${WORKDIR}
 COPY requirements.txt ${WORKDIR}
 RUN pip3 install -r requirements.txt
