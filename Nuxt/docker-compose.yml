@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  client:
+    container_name: nuxt
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .${WORKDIR}:${WORKDIR}
+      - node_modules_volume:${WORKDIR}/node_modules
+    working_dir: ${WORKDIR}
+    command: /bin/bash
+    ports:
+      - "${PORT}:${PORT}"
+    env_file:
+      - ./.env
+    environment:
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+    tty: true
+
+volumes:
+  node_modules_volume:

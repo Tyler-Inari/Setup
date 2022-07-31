@@ -1,0 +1,10 @@
+### macOS ###
+# General
+.DS_Store
+
+### Nuxtjs ###
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
