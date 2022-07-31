@@ -1,0 +1,10 @@
+{
+    "overrides":{
+        "code-font-family": "JetBrains mono",
+        "content-font-family": "JetBrains mono",
+        "ui-font-family": "JetBrains mono"
+    },
+
+    "theme":"JupyterLab Dark"
+    //"theme":"JupyterLab Light"
+}
