@@ -2,7 +2,7 @@
 CONFIG=".git/config"
 if [ -e  $CONFIG ]; then
   FILE=$(<$CONFIG)
-  BITBUCKET_HTTPS="https://TylerInari@bitbucket.org/*"
+  BITBUCKET_HTTPS="https://*@bitbucket.org/*"
   BITBUCKET_GITAT="git@bitbucket.org"
   for line in $FILE
   do
