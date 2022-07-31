@@ -12,7 +12,7 @@ services:
     working_dir: ${WORKDIR}
     command: /bin/bash
     ports:
-      - "${PORT}:${PORT}"
+      - ${PORT}:${PORT}
     env_file:
       - ./.env
     environment:
