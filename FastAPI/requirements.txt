@@ -1,2 +1,5 @@
 uvicorn
 fastapi
+mysqlclient
+mysql-connector-python
+python-dotenv
