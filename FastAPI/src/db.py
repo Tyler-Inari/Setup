@@ -7,17 +7,24 @@ load_dotenv(verbose=True)
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
-DB_HOST = os.environ.get("DB_HOST")
-DB_PORT = os.environ.get("DB_PORT")
-DB_USER = os.environ.get("DB_USER")
-DB_PASS = os.environ.get("DB_PASS")
-DB_NAME = os.environ.get("DB_NAME")
+MYSQL_HOST = os.environ.get("MYSQL_HOST")
+MYSQL_PORT = os.environ.get("MYSQL_PORT")
+MYSQL_DATABASE = os.environ.get("MYSQL_DATABASE")
+MYSQL_USER = os.environ.get("MYSQL_USER")
+MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD")
 print(
-    f"DB_HOST: {DB_HOST}, DB_PORT: {DB_PORT}, DB_USER: {DB_USER}, DB_PASS: {DB_PASS}, DB_NAME: {DB_NAME}"
+    f"MYSQL_HOST: {MYSQL_HOST}, MYSQL_PORT: {MYSQL_PORT}, MYSQL_DATABASE: {MYSQL_DATABASE}, MYSQL_USER: {MYSQL_USER}"
 )
 
 print("START CONNECT")
 mydb = mysql.connector.connect(
-    DB_HOST="corpus-db", port=DB_PORT, user=DB_USER, password=DB_PASS, database=DB_NAME
+    # host=MYSQL_HOST, port=MYSQL_PORT, user=MYSQL_USER, password=MYSQL_PASSWORD, database=MYSQL_DATABASE
+    # host="fastapi-db-1", port=MYSQL_PORT, user=MYSQL_USER, password=MYSQL_PASSWORD, database=MYSQL_DATABASE
+    # host="fastapi-db-1", port=MYSQL_PORT, user='root', password=MYSQL_PASSWORD, database=MYSQL_DATABASE
+    host="fastapi-db-1",
+    port=MYSQL_PORT,
+    user="root",
+    password=MYSQL_PASSWORD  # , database=MYSQL_DATABASE
+    # host="fastapi-db-1", port=MYSQL_PORT, user=MYSQL_USER, password="password", database=MYSQL_DATABASE
 )
 print("DONE")
