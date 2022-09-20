@@ -5,7 +5,7 @@ services:
     container_name: fastapi
     build:
       context: .
-      dockerfile: ./api/Dockerfile
+      dockerfile: ./Dockerfile
     volumes:
       - .${WORKDIR}:${WORKDIR}
     command: uvicorn main:app --host ${HOST} --port ${PORT} --reload
@@ -20,35 +20,6 @@ services:
       LC_ALL: ${LC_ALL}
       PYTHONUNBUFFERED: ${PYTHONUNBUFFERED}
       PYTHONIOENCODING: ${PYTHONIOENCODING}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_PORT: ${MYSQL_PORT}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     tty: true
     extra_hosts:
       - "host.docker.internal:host-gateway"
-  db:
-    image: mysql:latest
-    container_name: ${MYSQL_HOST}
-    ports:
-      - "${MYSQL_PORT}:${MYSQL_PORT}"
-    volumes:
-      - mysql:/var/lib/mysql
-      - mysql_config:/etc/mysql
-    env_file:
-      - ./.env
-    environment:
-      - MYSQL_HOST=${MYSQL_HOST}
-      - MYSQL_PORT=${MYSQL_PORT}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    tty: true
-    # restart: always
-
-volumes:
-  mysql:
-  mysql_config:

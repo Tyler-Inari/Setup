@@ -3,7 +3,11 @@
 ## Setup
 - Set env
     ```
-    cp .env.example
+    cp .env.example .env
+    ```
+- Source .env
+    ```
+    source .env
     ```
 - Build image and run container
     ```
