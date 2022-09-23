@@ -1,0 +1,18 @@
+version: "2"
+services:
+  node:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: ${WORKDIR}
+    volumes:
+      - ./${WORKDIR}:${WORKDIR}
+    env_file:
+      - ./.env
+    environment:
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+    expose:
+      - ${PORT}
+    tty: true
