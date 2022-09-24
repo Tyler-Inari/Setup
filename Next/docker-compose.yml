@@ -1,18 +1,23 @@
-version: "2"
+version: "3"
 services:
   node:
+    command: [ "yarn", "dev" ]
     build:
       context: .
       dockerfile: ./Dockerfile
     working_dir: ${WORKDIR}
     volumes:
-      - ./${WORKDIR}:${WORKDIR}
+      - ./${ROOTDIR}:${ROOTDIR}
     env_file:
       - ./.env
     environment:
       - HOST=${HOST}
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
+    ports:
+      - ${PORT}:${PORT}
     expose:
       - ${PORT}
     tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
