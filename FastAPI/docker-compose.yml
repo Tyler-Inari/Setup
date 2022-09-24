@@ -20,11 +20,6 @@ services:
       LC_ALL: ${LC_ALL}
       PYTHONUNBUFFERED: ${PYTHONUNBUFFERED}
       PYTHONIOENCODING: ${PYTHONIOENCODING}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASS}
     tty: true
     extra_hosts:
       - "host.docker.internal:host-gateway"

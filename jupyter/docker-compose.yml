@@ -14,9 +14,14 @@ services:
     env_file:
       - ./.env
     environment:
-      - LANG=${LANG}
-      - PYTHONUNBUFFERED=${PYTHONUNBUFFERED}
-      - PYTHONIOENCODING=${PYTHONIOENCODING}
+      WORKDIR: ${WORKDIR}
+      HOST: ${HOST}
+      PORT: ${PORT}
+      DEBUG: ${DEBUG}
+      LANG: ${LANG}
+      LC_ALL: ${LC_ALL}
+      PYTHONUNBUFFERED: ${PYTHONUNBUFFERED}
+      PYTHONIOENCODING: ${PYTHONIOENCODING}
+    tty: true
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    tty: true

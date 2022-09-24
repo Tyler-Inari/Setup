@@ -19,9 +19,12 @@ RUN git clone https://github.com/neologd/mecab-ipadic-neologd.git && \
     sudo bin/install-mecab-ipadic-neologd -n -y && \
     echo "dicdir=/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd">/etc/mecabrc && \
     cp /etc/mecabrc /usr/local/etc/
-RUN mkdir ${WORKDIR}
+# RUN mkdir ${WORKDIR}
 WORKDIR ${WORKDIR}
 COPY requirements.txt ${WORKDIR}
 COPY .jupyter/lab/ /root/.jupyter/lab/
-RUN pip3 install --upgrade pip && \
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
+    python3 -m pip install --user --upgrade pip && \
+    pip3 install --upgrade pip && \
     pip3 install -r requirements.txt
