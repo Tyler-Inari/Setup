@@ -35,8 +35,8 @@
         {
             "command": "runmenu:restart-and-run-all",
             "keys": [
-                "\",
-                "\"
+                "`",
+                "`"
             ],
             "selector": "[data-jp-code-runner]"
         },
